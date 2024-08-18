@@ -71,10 +71,11 @@ navbar .logo {
 }
 .main .create-join .createroom-butt {
   width: 100%;
-  margin-top: 60px;
+  margin-top: 30px;
+  margin-bottom: 60px;
   font-size: 24px;
   font-weight: bold;
-  background-color: #E2BFD9;
+  background-color: #C8A1E0;
   color:#674188;
   text-align: center;
   padding: 10px 20px;
@@ -149,7 +150,7 @@ navbar .logo {
   text-align: right;
   font-size: 24px;
   font-weight: bold;
-  color: #232931;
+  color: #674188;
 }
 .main .create-join .joinroom:hover {
   cursor: pointer;
@@ -221,21 +222,22 @@ navbar .logo {
   right: 0;
   height: 100%;
   width: 100%;
-  background-color: #393e46;
+  background-color: #F6EACB;
 }
 .overlay .box {
-  width: 25%;
+  width: 50%;
   margin: 0 auto;
-  height: 200px;
-  background-color: #ffffff;
-  margin-top: 100px;
+  height: 250px;
+  background-color: #D1E9F6;
+  margin-top: 150px;
   border-radius: 10px;
   text-align: center;
+  align-items: center;
 }
 .overlay .box .head-name {
   padding-top: 20px;
   text-align: center;
-  color: #393e46;
+  color: #000000;
   font-weight: bold;
 }
 .overlay .box .name-field {
@@ -245,20 +247,27 @@ navbar .logo {
   font-weight: bold;
   padding: 10px;
   width: 90%;
-  border-bottom: 3px solid #4ecca3;
-  color: #393e46;
+  background-color: #F1D3CE;
+
+  border-bottom: 3px solid #F1D3CE;
+  color: #000000;
   height: 40px;
 }
 .overlay .box .name-field:focus {
   outline: none;
+    background-color: #F6EACB;
+    border-bottom: 3px solid #EECAD5;
+    color: #000000;
+
+
 }
 .overlay .box .continue-name {
   border: none;
   margin: 0 auto;
   margin-top: 30px;
-  color: #ffffff;
+  color: #000000;
   font-weight: bold;
-  background-color: #4ecca3;
+  background-color: #EECAD5;
   padding: 12px 20px;
   border-radius: 10px;
   transition: opacity 0.5s;
