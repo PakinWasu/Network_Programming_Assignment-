@@ -38,7 +38,7 @@ img {
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #F7EFE5;
 }
 
 navbar .logo {
@@ -74,19 +74,19 @@ navbar .logo {
   margin-top: 60px;
   font-size: 24px;
   font-weight: bold;
-  background-color: #4ecca3;
-  color: white;
+  background-color: #E2BFD9;
+  color:#674188;
   text-align: center;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
-  border: 2px solid #4ecca3;
+  border: 2px solid #C8A1E0;
   transition: 0.3s;
 }
 .main .create-join .createroom-butt:hover {
-  background-color: white;
-  border: 2px solid #4ecca3;
-  color: #4ecca3;
+  background-color: #674188;
+  border: 2px solid #C8A1E0;
+  color: #F7EFE5;
   cursor: pointer;
 }
 .main .create-join .createroom-butt:focus {
@@ -112,24 +112,36 @@ navbar .logo {
   width: 100%;
   margin-top: 30px;
   font-size: 24px;
-  color: #393e46;
+  background-color: #E2BFD9;
+
+  color: #414141;
   text-align: center;
   padding: 10px 0;
   border: none;
-  border-bottom: 3px solid #232931;
-  border-top: 2px solid white;
+  border-bottom: 3px solid #674188;
   font-weight: bold;
+  border-radius: 10px;
 }
 .main .create-join .roomcode:focus {
-  background-color: white;
   border: 0;
   border-bottom: 3px solid #232931;
-  border-top: 2px solid white;
+  border-top: 2px solid #E2BFD9;
   outline: none;
-  border-radius: 0;
+  border-radius: 10px;
+  background-color: #E2BFD9;
+
+}
+.main .create-join .roomcode::placeholder {
+
+  color: #ffffff;
+
 }
 .main .create-join .roomcode-error {
   border-bottom: 3px solid #d31c1c;
+  border-top: 3px solid #d31c1c;
+  background-color: #5c5c5c;
+
+  
 }
 .main .create-join .joinroom {
   margin-top: 20px;
@@ -161,7 +173,7 @@ navbar .logo {
   width: 100px;
 }
 .main .video-cont .settings .device {
-  background-color: #4ecca3;
+  background-color: #E2BFD9;
   border-radius: 100px;
   padding: 10px;
   width: 40px;
