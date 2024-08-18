@@ -103,7 +103,6 @@ io.on('connect', socket => {
         rooms[socketroom[socket.id]].splice(index, 1);
         io.to(socketroom[socket.id]).emit('user count', rooms[socketroom[socket.id]].length);
         delete socketroom[socket.id];
-        //toDo: push socket.id out of rooms
     });
 })
 
