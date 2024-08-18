@@ -43,7 +43,7 @@ body {
 
 navbar .logo {
   font-size: 28px;
-  color: #393e46;
+  color: #674188;
   font-weight: bold;
   padding: 0 12%;
   margin-top: 32px;
@@ -62,7 +62,7 @@ navbar .logo {
 .main .create-join .text .head {
   font-size: 36px;
   font-weight: bold;
-  color: #393e46;
+  color: #674188;
 }
 .main .create-join .text .subtext {
   font-size: 24px;
@@ -71,11 +71,11 @@ navbar .logo {
 }
 .main .create-join .createroom-butt {
   width: 100%;
-  margin-top: 30px;
-  margin-bottom: 60px;
+  margin-top: 25px;
+  margin-bottom: 50px;
   font-size: 24px;
   font-weight: bold;
-  background-color: #C8A1E0;
+  background-color: #E2BFD9;
   color:#674188;
   text-align: center;
   padding: 10px 20px;
@@ -114,8 +114,7 @@ navbar .logo {
   margin-top: 30px;
   font-size: 24px;
   background-color: #E2BFD9;
-
-  color: #414141;
+  color: #F7EFE5;
   text-align: center;
   padding: 10px 0;
   border: none;
@@ -125,25 +124,20 @@ navbar .logo {
 }
 .main .create-join .roomcode:focus {
   border: 0;
-  border-bottom: 3px solid #232931;
-  border-top: 2px solid #E2BFD9;
+  border-bottom: 4px solid #E2BFD9;
   outline: none;
   border-radius: 10px;
-  background-color: #E2BFD9;
-
+  background-color: #674188;
 }
 .main .create-join .roomcode::placeholder {
-
   color: #ffffff;
-
 }
 .main .create-join .roomcode-error {
-  border-bottom: 3px solid #d31c1c;
-  border-top: 3px solid #d31c1c;
-  background-color: #5c5c5c;
-
-  
+  border-bottom: 3px solid #2b2b2b;
+  border-top: 3px solid #2b2b2b;
+  background-color: #bd5151;
 }
+
 .main .create-join .joinroom {
   margin-top: 20px;
   width: 100%;
@@ -222,22 +216,21 @@ navbar .logo {
   right: 0;
   height: 100%;
   width: 100%;
-  background-color: #F6EACB;
+  background-color: #EECAD5;
 }
 .overlay .box {
   width: 50%;
   margin: 0 auto;
-  height: 250px;
-  background-color: #D1E9F6;
-  margin-top: 150px;
+  height: 200px;
+  background-color: #674188;
+  margin-top: 100px;
   border-radius: 10px;
   text-align: center;
-  align-items: center;
 }
 .overlay .box .head-name {
   padding-top: 20px;
   text-align: center;
-  color: #000000;
+  color: #F7EFE5;
   font-weight: bold;
 }
 .overlay .box .name-field {
@@ -247,27 +240,21 @@ navbar .logo {
   font-weight: bold;
   padding: 10px;
   width: 90%;
-  background-color: #F1D3CE;
-
-  border-bottom: 3px solid #F1D3CE;
-  color: #000000;
+  border-bottom: 4px solid #E2BFD9;
+  color: #393e46;
   height: 40px;
+  border-radius: 10px;
 }
 .overlay .box .name-field:focus {
   outline: none;
-    background-color: #F6EACB;
-    border-bottom: 3px solid #EECAD5;
-    color: #000000;
-
-
 }
 .overlay .box .continue-name {
   border: none;
   margin: 0 auto;
   margin-top: 30px;
-  color: #000000;
+  color: #674188;
   font-weight: bold;
-  background-color: #EECAD5;
+  background-color: #F7EFE5;
   padding: 12px 20px;
   border-radius: 10px;
   transition: opacity 0.5s;
@@ -304,7 +291,7 @@ navbar .logo {
 }
 .container-room .left-cont {
   width: 80%;
-  background-color: #393e46;
+  background-color: #1b0c22;
   height: 100vh;
   padding: 50px;
   text-align: center;
@@ -462,7 +449,7 @@ navbar .logo {
   height: 100%;
   min-height: 200px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 20px;
   position: relative;
 }
 .container-room .left-cont .video-cont .video-box .video-frame {
@@ -471,7 +458,7 @@ navbar .logo {
   min-height: 200px;
   width: 100%;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 .container-room .left-cont .video-cont .video-box .nametag {
   color: white;
@@ -553,13 +540,13 @@ navbar .logo {
   display: flex;
   margin-top: 50px;
   width: 260px;
-  background-color: #ffffff;
+  background-color: #674188;
   border-radius: 10px;
   padding: 10px;
   justify-content: center;
 }
 .container-room .left-cont .footer .utils .audio {
-  background-color: #4ecca3;
+  background-color: #2E073F;
   text-align: center;
   color: white;
   padding: 10px;
@@ -570,10 +557,10 @@ navbar .logo {
 }
 .container-room .left-cont .footer .utils .audio:hover {
   cursor: pointer;
-  background-color: #393e46;
+  background-color: #E2BFD9;
 }
 .container-room .left-cont .footer .utils .novideo {
-  background-color: #4ecca3;
+  background-color: #2E073F;
   text-align: center;
   margin-left: 10px;
   color: white;
@@ -585,7 +572,7 @@ navbar .logo {
 }
 .container-room .left-cont .footer .utils .novideo:hover {
   cursor: pointer;
-  background-color: #393e46;
+  background-color: #E2BFD9;
 }
 .container-room .left-cont .footer .utils .screenshare {
   background-color: #d8d8d8;
@@ -643,10 +630,10 @@ navbar .logo {
   display: flex;
 }
 .container-room .left-cont .footer .copycode-cont .roomcode {
-  color: #4ecca3;
+  color: #674188;
   padding: 10px 20px;
-  background-color: white;
-  border-bottom: 3px solid #4ecca3;
+  background-color: #F7EFE5;
+  border-bottom: 3px solid #E2BFD9;
   font-weight: bold;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -655,13 +642,14 @@ navbar .logo {
   padding: 10px 0;
   width: 100px;
   text-align: center;
-  color: white;
-  background-color: #4ecca3;
+  color: #F7EFE5;
+  background-color: #674188;
   border: none;
   font-weight: bold;
   outline: none;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  border-bottom: 3px solid #E2BFD9;
 }
 .container-room .left-cont .footer .copycode-cont .copycode-button:hover {
   cursor: pointer;
@@ -671,7 +659,7 @@ navbar .logo {
 }
 .container-room .right-cont {
   width: 30%;
-  background-color: #ffffff;
+  background-color: #674188;
   height: 100vh;
   /* Track */
   /* Handle */
@@ -691,11 +679,11 @@ navbar .logo {
 }
 .container-room .right-cont .head-title {
   font-weight: bold;
-  color: #393e46;
-  background-color: #ffffff;
+  color: #F7EFE5;
+  background-color: #674188;
   width: 100%;
   display: flex;
-  border-bottom: 2px solid #393e46;
+  border-bottom: 4px solid #E2BFD9;
 }
 .container-room .right-cont .head-title .chats,
 .container-room .right-cont .head-title .attendies {
@@ -707,11 +695,12 @@ navbar .logo {
 }
 .container-room .right-cont .head-title .chats:hover,
 .container-room .right-cont .head-title .attendies:hover {
-  background-color: #f8f8f8;
+  background-color: #E2BFD9;
   cursor: pointer;
+  color: #674188;
 }
 .container-room .right-cont .chat-cont {
-  background-color: #ffffff;
+  background-color: #2E073F;
   height: 84vh;
   padding: 10px;
   padding-top: 10px;
@@ -720,18 +709,19 @@ navbar .logo {
 .container-room .right-cont .chat-cont .message {
   margin-bottom: 15px;
   margin-left: 10px;
-  background-color: #ffffff;
+  background-color: #2E073F;
   border-radius: 2px;
   word-break: break-all;
   word-wrap: break-word;
 }
 .container-room .right-cont .chat-cont .message .info {
   display: flex;
-  font-size: 0.85rem;
+  font-size: 1rem;
+  color: white;
 }
 .container-room .right-cont .chat-cont .message .info .username {
   font-weight: bold;
-  color: #4ecca3;
+  color: #F7EFE5;
 }
 .container-room .right-cont .chat-cont .message .info .time {
   margin-left: 12px;
@@ -739,12 +729,13 @@ navbar .logo {
 .container-room .right-cont .chat-cont .message .content {
   margin-top: 5px;
   font-size: 0.9rem;
+  color: #F7EFE5;
 }
 .container-room .right-cont .chat-input-cont {
   padding: 12px;
   display: flex;
   height: 60px;
-  background-color: #ffffff;
+  background-color: #674188;
   box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
 }
 .container-room .right-cont .chat-input-cont .ci-cont {
@@ -760,8 +751,10 @@ navbar .logo {
   font-size: 0.85rem;
   padding: 4px 10px;
   border: none;
-  border-bottom: 3px solid #4ecca3;
-  color: #393e46;
+  border-bottom: 3px solid #E2BFD9;
+  color: #674188;
+  background-color: #F7EFE5;
+  border-radius: 5px;
 }
 .container-room .right-cont .chat-input-cont .chat-input:focus {
   outline: none;
@@ -770,17 +763,18 @@ navbar .logo {
   height: 36px;
   padding: 5px 20px;
   border: none;
-  background-color: white;
-  color: #4ecca3;
+  background-color: #2E073F;
+  color: #E2BFD9;
   font-weight: bold;
   font-size: 0.85rem;
   border-radius: 2px;
   transition: background-color 0.5s;
+  border-radius: 5px;
 }
 .container-room .right-cont .chat-input-cont .chat-send:hover {
-  color: #2980b9;
+  color: #674188;
   cursor: pointer;
-  background-color: #f3f3f3;
+  background-color: #F7EFE5;
 }
 .container-room .right-cont .chat-input-cont .chat-send:focus {
   outline: none;
