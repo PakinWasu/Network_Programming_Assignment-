@@ -1,25 +1,41 @@
-import asyncio
 import socket
-import struct
+import threading
+import time
 
-async def receive_messages(sock):
+def receive_messages(client_socket):
     while True:
-        data, _ = await asyncio.get_event_loop().run_in_executor(None, sock.recvfrom, 1024)
-        print(data.decode())
+        try:
+            message = client_socket.recv(1024).decode()
+            if message:
+                print(message)
+            else:
+                break
+        except Exception as e:
+            print(f"Error receiving message: {e}")
+            break
 
-async def main():
-    multicast_group = ('224.0.0.1', 5000)
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    sock.bind(('', multicast_group[1]))
+def main():
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket.connect(('localhost', 12345))
     
-    mreq = struct.pack('4sl', socket.inet_aton(multicast_group[0]), socket.INADDR_ANY)
-    sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+    username = input("Enter your username: ")
+    client_socket.send(username.encode())
     
-    asyncio.create_task(receive_messages(sock))
+    roomid = input("Enter room ID to join: ")
+    client_socket.send(roomid.encode())
+    
+    receive_thread = threading.Thread(target=receive_messages, args=(client_socket,))
+    receive_thread.start()
     
     while True:
-        message = input()
-        sock.sendto(message.encode(), multicast_group)
+        message = input() 
+        timestamp = time.strftime("%H:%M:%S")
+        print(f"[{timestamp}] You: {message}")
+        if message.lower() == 'exit':
+            break
+        client_socket.send(message.encode())
+    
+    client_socket.close()
 
-asyncio.run(main())
+if __name__ == "__main__":
+    main()

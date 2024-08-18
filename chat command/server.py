@@ -1,44 +1,71 @@
-import asyncio
 import socket
-import struct
-import datetime
+import threading
+import time
 
-class MulticastChatRoom:
-    def __init__(self, multicast_group, port):
-        self.multicast_group = multicast_group
-        self.port = port
-        self.clients = []
+# เก็บข้อมูลห้องและผู้ใช้
+rooms = {}
+socketroom = {}
+socketname = {}
 
-    async def broadcast(self, message):
-        for client in self.clients:
-            client.sendto(message.encode(), self.multicast_group)
+def broadcast(roomid, message, sender):
+    for client_socket in rooms.get(roomid, []):
+        if client_socket != sender:
+            try:
+                client_socket.send(message.encode())
+            except Exception as e:
+                print(f"Error sending message: {e}")
 
-async def handle_client(sock, chat_room):
+def handle_client(client_socket, address):
+    print(f"Connection from {address} has been established.")
+    
+    username = client_socket.recv(1024).decode().strip()
+    client_socket.send(f"Your username is: {username}".encode())
+    
+    roomid = client_socket.recv(1024).decode().strip()
+    client_socket.send(f"\nYour room ID to join is : {roomid}\n{'-'*40} \n".encode())
+    socketroom[client_socket] = roomid
+    socketname[client_socket] = username
+    
+    if roomid not in rooms:
+        rooms[roomid] = []
+    
+    rooms[roomid].append(client_socket)
+    
+    # Notify room of new user
+    timestamp = time.strftime("%H:%M:%S")
+    broadcast(roomid, f"[{timestamp}] {username} has joined the room.", client_socket)
+    
     while True:
-        data, addr = await asyncio.get_event_loop().run_in_executor(None, sock.recvfrom, 1024)
-        message = data.decode()
-        timestamped_message = f"{datetime.datetime.now()} - {addr}: {message}"
-        print(timestamped_message)
-        await chat_room.broadcast(timestamped_message)
-
-async def main():
-    multicast_group = ('224.0.0.1', 5000)
-    port = 5000
-    chat_room = MulticastChatRoom(multicast_group, port)
+        try:
+            message = client_socket.recv(1024).decode()
+            if message:
+                timestamp = time.strftime("%H:%M:%S")
+                broadcast(roomid, f"[{timestamp}] {username}: {message}", client_socket)
+            else:
+                break
+        except Exception as e:
+            print(f"Error receiving message: {e}")
+            break
     
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    sock.bind(('', port))
+    # Notify room of user leaving
+    rooms[roomid].remove(client_socket)
+    timestamp = time.strftime("%H:%M:%S")
+    broadcast(roomid, f"[{timestamp}] {username} has left the room.", client_socket)
     
-    mreq = struct.pack('4sl', socket.inet_aton(multicast_group[0]), socket.INADDR_ANY)
-    sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
-    
-    async def send_messages():
-        while True:
-            message = input()
-            chat_room.broadcast(message)
+    client_socket.close()
+    del socketroom[client_socket]
+    del socketname[client_socket]
 
-    asyncio.create_task(handle_client(sock, chat_room))
-    await send_messages()
+def main():
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind(('0.0.0.0', 12345))
+    server.listen(5)
+    print("Server is listening on port 12345")
 
-asyncio.run(main())
+    while True:
+        client_socket, address = server.accept()
+        client_thread = threading.Thread(target=handle_client, args=(client_socket, address))
+        client_thread.start()
+
+if __name__ == "__main__":
+    main()
