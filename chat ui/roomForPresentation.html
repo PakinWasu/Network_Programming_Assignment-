@@ -1,0 +1,108 @@
+<!DOCTYPE html> <!-- ประกาศว่าเอกสารนี้เป็น HTML5 -->
+
+<head>
+    <meta charset="utf-8"> <!-- กำหนดการเข้ารหัสตัวอักษรเป็น UTF-8 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- ทำให้เบราว์เซอร์ทำงานเข้ากันได้กับ IE edge -->
+    <title>Chat Room</title> <!-- ชื่อของเอกสารที่จะแสดงบนแท็บเบราว์เซอร์ -->
+    <meta name="description" content=""> <!-- คำอธิบายของหน้าเว็บ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- ทำให้การแสดงผลเข้ากับอุปกรณ์มือถือ -->
+    <link rel="stylesheet" href="css/style.css"> <!-- ลิงก์ไปยังไฟล์ CSS -->
+    <script src="https://kit.fontawesome.com/6510466b6c.js" crossorigin="anonymous"></script> <!-- ลิงก์ไปยัง FontAwesome เพื่อใช้ไอคอน -->
+    <script>
+        const params = new URLSearchParams(location.search); // ดึงค่า query parameters จาก URL
+        if (!params.get("room")) location.href = "/"; // ถ้าไม่มี query parameter "room" ให้เปลี่ยนเส้นทางไปยังหน้าแรก
+    </script>
+</head>
+
+<body>
+    <div class="overlay" id="overlay"> <!-- ส่วนหน้าจอ overlay เพื่อใส่ชื่อ -->
+        <div class="box">
+            <div class="head-name">Enter a Name</div> <!-- หัวข้อให้ใส่ชื่อ -->
+            <input type="text" class="name-field" placeholder="Type here.." id="name-field"></input><br> <!-- ช่องให้ผู้ใช้พิมพ์ชื่อ -->
+            <button class="continue-name">Continue</button> <!-- ปุ่มสำหรับยืนยันชื่อ -->
+        </div>
+    </div>
+
+    <div class="container-room"> <!-- ส่วนหลักของหน้า -->
+        <div class="left-cont"> <!-- ส่วนด้านซ้ายของหน้า -->
+
+            <div class="video-cont-single" id="vcont"> <!-- กล่องสำหรับวิดีโอ -->
+                <div class="video-box">
+                    <video class="video-frame" id="vd1" autoplay playsinline> <!-- วิดีโอของผู้ใช้ -->
+                    </video>
+                    <div class="nametag" id="myname">yourname</div> <!-- แสดงชื่อผู้ใช้ที่วิดีโอ -->
+                    <div class="mute-icon" id="mymuteicon"><i class="fas fa-microphone-slash"></i></div> <!-- แสดงไอคอนปิดไมโครโฟน -->
+                    <div class="video-off" id="myvideooff">Video Off</div> <!-- แสดงข้อความว่า "Video Off" -->
+                </div>
+            </div>
+
+            <div class="whiteboard-cont"> <!-- ส่วนกระดานวาดภาพ -->
+                <canvas id="whiteboard" height="1000" width="1000"></canvas> <!-- กระดานวาดภาพที่ใช้ <canvas> -->
+                <div class="colors-cont"> <!-- ส่วนเลือกสี -->
+                    <div class="black" onclick="setColor('black')"></div> <!-- ตัวเลือกสีดำ -->
+                    <div class="red" onclick="setColor('#e74c3c')"></div> <!-- ตัวเลือกสีแดง -->
+                    <div class="yellow" onclick="setColor('#f1c40f')"></div> <!-- ตัวเลือกสีเหลือง -->
+                    <div class="green" onclick="setColor('#badc58')"></div> <!-- ตัวเลือกสีเขียว -->
+                    <div class="blue" onclick="setColor('#3498db')"></div> <!-- ตัวเลือกสีน้ำเงิน -->
+                    <div class="orange" onclick="setColor('#e67e22')"></div> <!-- ตัวเลือกสีส้ม -->
+                    <div class="purple" onclick="setColor('#9b59b6')"></div> <!-- ตัวเลือกสีม่วง -->
+                    <div class="pink" onclick="setColor('#fd79a8')"></div> <!-- ตัวเลือกสีชมพู -->
+                    <div class="brown" onclick="setColor('#834c32')"></div> <!-- ตัวเลือกสีน้ำตาล -->
+                    <div class="grey" onclick="setColor('gray')"></div> <!-- ตัวเลือกสีเทา -->
+                    <div class="eraser" onclick="setEraser()"><i class="fas fa-eraser"></i></div> <!-- ตัวลบ -->
+                    <div class="clearboard" onclick="clearBoard()"><i class="fas fa-trash-alt"></i></div> <!-- ปุ่มล้างกระดาน -->
+                </div>
+            </div>
+
+            <div class="footer"> <!-- ส่วนท้ายของหน้า -->
+                <div class="utils"> <!-- ส่วนไอคอนสำหรับควบคุม -->
+                    <div class="audio">
+                        <i class="fas fa-microphone"></i> <!-- ไอคอนไมโครโฟน -->
+                    </div>
+                    <div class="novideo">
+                        <i class="fas fa-video"></i> <!-- ไอคอนวิดีโอ -->
+                    </div>
+                    <div class="screenshare tooltip">
+                        <i class="fas fa-desktop"></i> <!-- ไอคอนแชร์หน้าจอ -->
+                        <span class="tooltiptext">Share Screen</span> <!-- ข้อความ tooltip "Share Screen" -->
+                    </div>
+                    <div class="board-icon tooltip">
+                        <i class="fas fa-chalkboard"></i> <!-- ไอคอนกระดานวาด -->
+                        <span class="tooltiptext">Whiteboard</span> <!-- ข้อความ tooltip "Whiteboard" -->
+                    </div>
+                    <div class="cutcall tooltip">
+                        <i class="fas fa-phone-slash"></i> <!-- ไอคอนออกจากการโทร -->
+                        <span class="tooltiptext">Leave Call</span> <!-- ข้อความ tooltip "Leave Call" -->
+                    </div>
+                </div>
+                <div class="copycode-cont"> <!-- ส่วนที่ใช้คัดลอกโค้ดห้อง -->
+                    <div class="roomcode"></div> <!-- แสดงโค้ดของห้อง -->
+                    <button class="copycode-button" onclick="CopyClassText()">Copy Code</button> <!-- ปุ่มคัดลอกโค้ด -->
+                </div>
+            </div>
+        </div>
+
+        <div class="right-cont"> <!-- ส่วนด้านขวาของหน้า -->
+            <div class="head-title">
+                <div class="chats"><i class="fas fa-comment-alt mr-1"></i>Chats</div> <!-- หัวข้อแชท -->
+            </div>
+
+            <div class="chat-cont"> <!-- ส่วนแสดงข้อความแชท -->
+            </div>
+
+            <div class="chat-input-cont"> <!-- ส่วนสำหรับพิมพ์ข้อความ -->
+                <div class="ci-cont">
+                    <input type="text" class="chat-input" placeholder="Type chat here.."> <!-- ช่องพิมพ์ข้อความแชท -->
+                </div>
+                <div class="ci-send">
+                    <button class="chat-send">Send</button> <!-- ปุ่มส่งข้อความแชท -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script> <!-- ลิงก์ไปยัง Socket.io library -->
+    <script src="js/room.js"></script> <!-- ลิงก์ไปยังไฟล์ JavaScript สำหรับการจัดการห้อง -->
+</body>
+
+</html>

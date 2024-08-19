@@ -1,0 +1,43 @@
+<!DOCTYPE html> <!-- ประกาศว่าเอกสารนี้เป็น HTML5 -->
+
+<head>
+    <meta charset="utf-8"> <!-- กำหนดการเข้ารหัสตัวอักษรเป็น UTF-8 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- ทำให้เบราว์เซอร์ทำงานเข้ากันได้กับ IE edge -->
+    <title>Chat Room</title> <!-- ชื่อของเอกสารที่จะแสดงบนแท็บเบราว์เซอร์ -->
+    <meta name="description" content=""> <!-- คำอธิบายของหน้าเว็บ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- ทำให้การแสดงผลเข้ากับอุปกรณ์มือถือ -->
+    <link rel="stylesheet" href="css/style.css"> <!-- ลิงก์ไปยังไฟล์ CSS -->
+    <script src="https://kit.fontawesome.com/6510466b6c.js" crossorigin="anonymous"></script> <!-- ลิงก์ไปยัง FontAwesome เพื่อใช้ไอคอน -->
+</head>
+
+<body>
+    <navbar> <!-- แถบเมนู -->
+        <div class="logo">Video Call & Chat Room</div> <!-- ชื่อและโลโก้ของแอป -->
+    </navbar>
+
+    <div class="main"> <!-- ส่วนหลักของหน้า -->
+        <div class="create-join"> <!-- กล่องสร้างห้องหรือเข้าร่วม -->
+            <div class="text">
+                <div class="head">Create Video Meetings</div> <!-- หัวข้อสำหรับการสร้างห้อง -->
+                <div class="subtext">Assignment for Network Programming.</div> <!-- ข้อความอธิบายเพิ่มเติม -->
+            </div>
+            <input type="text" name="room" spellcheck="false" placeholder="Enter Room Name" id="roomname" class="roomcode"><br> <!-- ช่องให้ผู้ใช้ใส่ชื่อห้องเพื่อสร้างห้อง -->
+
+            <button id="createroom" class="createroom-butt unselectable">Create Room</button><br> <!-- ปุ่มสร้างห้อง -->
+            <input type="text" name="room" spellcheck="false" placeholder="Enter Room Code" id="roomcode" class="roomcode"><br> <!-- ช่องให้ผู้ใช้ใส่โค้ดห้องเพื่อเข้าร่วม -->
+            <div class="joinroom unselectable" id="joinroom">Join Room</div> <!-- ปุ่มเข้าร่วมห้อง -->
+        </div>
+
+        <div class="video-cont"> <!-- ส่วนสำหรับแสดงวิดีโอ -->
+            <video class="video-self" autoplay muted playsinline></video> <!-- วิดีโอของผู้ใช้เองที่ถูกปิดเสียงไว้ -->
+            <div class="settings"> <!-- การตั้งค่าอุปกรณ์ -->
+                <div class="device" id="mic"><i class="fas fa-microphone"></i></div> <!-- ปุ่มไมโครโฟน -->
+                <div class="device" id="webcam"><i class="fas fa-video"></i></div> <!-- ปุ่มกล้องเว็บแคม -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script> <!-- ลิงก์ไปยังไฟล์ JavaScript สำหรับการจัดการฟังก์ชันของหน้า -->
+</body>
+
+</html>
