@@ -35,6 +35,9 @@ def handle_client(client_socket, address):
     # แจ้งให้ห้องทราบว่ามีผู้ใช้ใหม่เข้ามา
     timestamp = time.strftime("%H:%M:%S")  # รับเวลาปัจจุบันในรูปแบบ ชั่วโมง:นาที:วินาที
     broadcast(roomid, f"[{timestamp}] {username} has joined the room.", client_socket)  # ส่งข้อความเข้าห้อง
+    
+    
+    print(threading.enumerate())
 
     while True:  # ลูปหลักสำหรับรับข้อความจากลูกค้า
         try:
